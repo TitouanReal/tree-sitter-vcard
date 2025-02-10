@@ -13,13 +13,13 @@ module.exports = grammar({
   rules: {
     source_file: ($) =>
       seq(
-        repeat($.crlf),
-        repeat(seq($.property, repeat1($.crlf))),
+        repeat($._crlf),
+        repeat(seq($.property, repeat1($._crlf))),
         $.property,
-        repeat($.crlf),
+        repeat($._crlf),
       ),
 
-    crlf: ($) => choice("\r\n", "\r", "\n"),
+    _crlf: ($) => choice("\r\n", "\r", "\n"),
 
     property: ($) =>
       seq(

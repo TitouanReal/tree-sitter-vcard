@@ -9,7 +9,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "crlf"
+            "name": "_crlf"
           }
         },
         {
@@ -25,7 +25,7 @@
                 "type": "REPEAT1",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "crlf"
+                  "name": "_crlf"
                 }
               }
             ]
@@ -39,12 +39,12 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "crlf"
+            "name": "_crlf"
           }
         }
       ]
     },
-    "crlf": {
+    "_crlf": {
       "type": "CHOICE",
       "members": [
         {
@@ -188,5 +188,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
