@@ -9,7 +9,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "crlf"
+            "name": "_crlf"
           }
         },
         {
@@ -25,7 +25,7 @@
                 "type": "REPEAT1",
                 "content": {
                   "type": "SYMBOL",
-                  "name": "crlf"
+                  "name": "_crlf"
                 }
               }
             ]
@@ -39,27 +39,14 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "crlf"
+            "name": "_crlf"
           }
         }
       ]
     },
-    "crlf": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "\r\n"
-        },
-        {
-          "type": "STRING",
-          "value": "\r"
-        },
-        {
-          "type": "STRING",
-          "value": "\n"
-        }
-      ]
+    "_crlf": {
+      "type": "STRING",
+      "value": "\r\n"
     },
     "property": {
       "type": "SEQ",
@@ -125,7 +112,7 @@
     },
     "property_value": {
       "type": "PATTERN",
-      "value": ".*"
+      "value": "[^\\r\\n]*"
     },
     "parameter": {
       "type": "SEQ",
@@ -188,5 +175,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
