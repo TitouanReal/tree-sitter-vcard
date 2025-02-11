@@ -3,7 +3,7 @@
   "grammars": [
     {
       "name": "vcard",
-      "camelcase": "vCard",
+      "camelcase": "VCard",
       "title": "vCard",
       "scope": "source.vcard",
       "file-types": ["vCard"],
