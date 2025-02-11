@@ -1,0 +1,37 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "vcard",
+      "camelcase": "VCard",
+      "title": "vCard",
+      "scope": "source.vcard",
+      "file-types": ["vCard"],
+      "injection-regex": "^vcard$",
+      "class-name": "TreeSitterVcard"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "APACHE-2.0 OR MIT ",
+    "description": "vCard parser",
+    "authors": [
+      {
+        "name": "Titouan Real",
+        "email": "titouan.real@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/TitouanReal/tree-sitter-vcard"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
