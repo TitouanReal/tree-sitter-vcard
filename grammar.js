@@ -10,42 +10,38 @@
 module.exports = grammar({
   name: "vcard",
 
-  rules: {
-    source_file: ($) =>
-      seq(
-        repeat($.crlf),
-        repeat(seq($.property, repeat1($.crlf))),
-        $.property,
-        repeat($.crlf),
-      ),
+  extras: ($) => [],
 
-    crlf: ($) => choice("\r\n", "\r", "\n"),
+  rules: {
+    source_file: ($) => repeat(seq($.property, repeat1($.crlf))),
+
+    crlf: ($) => "\r\n",
 
     property: ($) =>
       seq(
-        optional(seq($.group, ".")),
+        // optional(seq($.group, ".")),
         $.property_name,
-        repeat(seq(";", $.parameter)),
+        // repeat(seq(";", $.parameter)),
         ":",
         $.property_value,
       ),
 
-    group: ($) => /[A-Za-z0-9-]+/,
+    // group: ($) => /[A-Za-z0-9-]+/,
 
-    property_name: ($) => /[A-Za-z0-9-]+/,
+    property_name: ($) => /[A-Za-z0-9-(\r\n\x20)(\r\n\t)]+/,
 
-    property_value: ($) => /.*/,
+    property_value: ($) => /[A-Za-z0-9-]*/,
 
-    parameter: ($) =>
-      seq(
-        $.parameter_name,
-        "=",
-        $.parameter_value,
-        repeat(seq(",", $.parameter_value)),
-      ),
+    // parameter: ($) =>
+    //   seq(
+    //     $.parameter_name,
+    //     "=",
+    //     $.parameter_value,
+    //     repeat(seq(",", $.parameter_value)),
+    //   ),
 
-    parameter_name: ($) => /[A-Za-z0-9-]+/,
+    // parameter_name: ($) => /[A-Za-z0-9-]/,
 
-    parameter_value: ($) => choice(/[^";:,\x00-\x1F]+/, /"[^"\x00-\x1F]+"/),
+    // parameter_value: ($) => choice(/[^";:,\x00-\x1F]+/, /"[^"\x00-\x1F]+"/),
   },
 });

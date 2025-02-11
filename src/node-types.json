@@ -1,44 +1,5 @@
 [
   {
-    "type": "crlf",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "group",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "parameter",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "parameter_name",
-          "named": true
-        },
-        {
-          "type": "parameter_value",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "parameter_name",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "parameter_value",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "property",
     "named": true,
     "fields": {},
@@ -46,14 +7,6 @@
       "multiple": true,
       "required": true,
       "types": [
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "parameter",
-          "named": true
-        },
         {
           "type": "property_name",
           "named": true
@@ -66,18 +19,13 @@
     }
   },
   {
-    "type": "property_name",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "source_file",
     "named": true,
     "root": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "crlf",
@@ -91,36 +39,16 @@
     }
   },
   {
-    "type": "\n",
-    "named": false
-  },
-  {
-    "type": "\r",
-    "named": false
-  },
-  {
-    "type": "\r\n",
-    "named": false
-  },
-  {
-    "type": ",",
-    "named": false
-  },
-  {
-    "type": ".",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
   {
-    "type": ";",
-    "named": false
+    "type": "crlf",
+    "named": true
   },
   {
-    "type": "=",
-    "named": false
+    "type": "property_name",
+    "named": true
   },
   {
     "type": "property_value",
