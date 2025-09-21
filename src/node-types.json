@@ -66,13 +66,18 @@
     "fields": {}
   },
   {
+    "type": "property_value",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "property",
@@ -83,6 +88,15 @@
   },
   {
     "type": "\r\n",
+    "named": false,
+    "extra": true
+  },
+  {
+    "type": "\r\n\t",
+    "named": false
+  },
+  {
+    "type": "\r\n ",
     "named": false
   },
   {
@@ -104,9 +118,5 @@
   {
     "type": "=",
     "named": false
-  },
-  {
-    "type": "property_value",
-    "named": true
   }
 ]

@@ -10,16 +10,11 @@
 module.exports = grammar({
   name: "vcard",
 
+  extras: ($) => ["\r\n"],
+
   rules: {
     source_file: ($) =>
-      seq(
-        repeat($._crlf),
-        repeat(seq($.property, repeat1($._crlf))),
-        $.property,
-        repeat($._crlf),
-      ),
-
-    _crlf: ($) => "\r\n",
+      seq(repeat(seq($.property, "\r\n")), optional($.property)),
 
     property: ($) =>
       seq(
@@ -30,11 +25,14 @@ module.exports = grammar({
         $.property_value,
       ),
 
+    // TODO: Support line continuation
     group: ($) => /[A-Za-z0-9-]+/,
 
+    // TODO: Support line continuation
     property_name: ($) => /[A-Za-z0-9-]+/,
 
-    property_value: ($) => /[^\r\n]*/,
+    // TODO: Split multi values
+    property_value: ($) => repeat1(choice(/[^\r\n]/, "\r\n ", "\r\n\t")),
 
     parameter: ($) =>
       seq(
@@ -44,8 +42,10 @@ module.exports = grammar({
         repeat(seq(",", $.parameter_value)),
       ),
 
+    // TODO: Support line continuation
     parameter_name: ($) => /[A-Za-z0-9-]+/,
 
+    // TODO: Support line continuation
     parameter_value: ($) => choice(/[^";:,\x00-\x1F]+/, /"[^"\x00-\x1F]+"/),
   },
 });

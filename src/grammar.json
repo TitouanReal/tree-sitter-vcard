@@ -8,13 +8,6 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "_crlf"
-          }
-        },
-        {
-          "type": "REPEAT",
-          "content": {
             "type": "SEQ",
             "members": [
               {
@@ -22,31 +15,25 @@
                 "name": "property"
               },
               {
-                "type": "REPEAT1",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "_crlf"
-                }
+                "type": "STRING",
+                "value": "\r\n"
               }
             ]
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "property"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_crlf"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "property"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
-    },
-    "_crlf": {
-      "type": "STRING",
-      "value": "\r\n"
     },
     "property": {
       "type": "SEQ",
@@ -111,8 +98,24 @@
       "value": "[A-Za-z0-9-]+"
     },
     "property_value": {
-      "type": "PATTERN",
-      "value": "[^\\r\\n]*"
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[^\\r\\n]"
+          },
+          {
+            "type": "STRING",
+            "value": "\r\n "
+          },
+          {
+            "type": "STRING",
+            "value": "\r\n\t"
+          }
+        ]
+      }
     },
     "parameter": {
       "type": "SEQ",
@@ -167,8 +170,8 @@
   },
   "extras": [
     {
-      "type": "PATTERN",
-      "value": "\\s"
+      "type": "STRING",
+      "value": "\r\n"
     }
   ],
   "conflicts": [],
