@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-vcard
 HOMEPAGE_URL := https://github.com/titouanreal/tree-sitter-vcard
-VERSION := 0.1.0
+VERSION := 0.2.0
 
 # repository
 SRC_DIR := src

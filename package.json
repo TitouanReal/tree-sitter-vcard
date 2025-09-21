@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-vcard",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "vCard parser",
   "repository": "https://github.com/titouanreal/tree-sitter-vcard",
   "license": "APACHE-2.0 OR MIT ",
