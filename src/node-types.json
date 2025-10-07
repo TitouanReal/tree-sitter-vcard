@@ -87,6 +87,19 @@
     }
   },
   {
+    "type": "\n",
+    "named": false,
+    "extra": true
+  },
+  {
+    "type": "\n\t",
+    "named": false
+  },
+  {
+    "type": "\n ",
+    "named": false
+  },
+  {
     "type": "\r\n",
     "named": false,
     "extra": true

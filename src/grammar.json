@@ -15,8 +15,17 @@
                 "name": "property"
               },
               {
-                "type": "STRING",
-                "value": "\r\n"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "\r\n"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
               }
             ]
           }
@@ -113,6 +122,14 @@
           {
             "type": "STRING",
             "value": "\r\n\t"
+          },
+          {
+            "type": "STRING",
+            "value": "\n "
+          },
+          {
+            "type": "STRING",
+            "value": "\n\t"
           }
         ]
       }
@@ -172,6 +189,10 @@
     {
       "type": "STRING",
       "value": "\r\n"
+    },
+    {
+      "type": "STRING",
+      "value": "\n"
     }
   ],
   "conflicts": [],

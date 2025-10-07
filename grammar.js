@@ -10,11 +10,11 @@
 module.exports = grammar({
   name: "vcard",
 
-  extras: ($) => ["\r\n"],
+  extras: ($) => ["\r\n", "\n"],
 
   rules: {
     source_file: ($) =>
-      seq(repeat(seq($.property, "\r\n")), optional($.property)),
+      seq(repeat(seq($.property, choice("\r\n", "\n"))), optional($.property)),
 
     property: ($) =>
       seq(
@@ -32,7 +32,8 @@ module.exports = grammar({
     property_name: ($) => /[A-Za-z0-9-]+/,
 
     // TODO: Split multi values
-    property_value: ($) => repeat1(choice(/[^\r\n]/, "\r\n ", "\r\n\t")),
+    property_value: ($) =>
+      repeat1(choice(/[^\r\n]/, "\r\n ", "\r\n\t", "\n ", "\n\t")),
 
     parameter: ($) =>
       seq(
