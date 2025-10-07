@@ -1,11 +1,11 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=62.4.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "tree-sitter-vcard"
 description = "vCard parser"
-version = "0.2.0"
+version = "0.3.0"
 keywords = ["incremental", "parsing", "tree-sitter", "vcard"]
 classifiers = [
   "Intended Audience :: Developers",
@@ -15,7 +15,7 @@ classifiers = [
 ]
 authors = [{ name = "Titouan Real", email = "titouan.real@gmail.com" }]
 requires-python = ">=3.10"
-license.text = "APACHE-2.0 OR MIT "
+license.text = "APACHE-2.0 OR MIT"
 readme = "README.md"
 
 [project.urls]

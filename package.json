@@ -1,9 +1,9 @@
 {
   "name": "tree-sitter-vcard",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "vCard parser",
   "repository": "https://github.com/titouanreal/tree-sitter-vcard",
-  "license": "APACHE-2.0 OR MIT ",
+  "license": "APACHE-2.0 OR MIT",
   "author": {
     "name": "Titouan Real",
     "email": "titouan.real@gmail.com"
@@ -27,15 +27,16 @@
     "*.wasm"
   ],
   "dependencies": {
-    "node-addon-api": "^8.2.1",
-    "node-gyp-build": "^4.8.2"
+    "node-addon-api": "^8.5.0",
+    "node-gyp-build": "^4.8.4"
   },
   "devDependencies": {
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.25.0"
+    "tree-sitter": "^0.22.4",
+    "tree-sitter-cli": "^0.25.9"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.1"
+    "tree-sitter": "^0.22.4"
   },
   "peerDependenciesMeta": {
     "tree-sitter": {

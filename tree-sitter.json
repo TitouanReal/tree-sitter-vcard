@@ -6,14 +6,14 @@
       "camelcase": "VCard",
       "title": "vCard",
       "scope": "source.vcard",
-      "file-types": ["vCard"],
+      "file-types": ["vcard"],
       "injection-regex": "^vcard$",
       "class-name": "TreeSitterVcard"
     }
   ],
   "metadata": {
     "version": "0.2.0",
-    "license": "APACHE-2.0 OR MIT ",
+    "license": "APACHE-2.0 OR MIT",
     "description": "vCard parser",
     "authors": [
       {
