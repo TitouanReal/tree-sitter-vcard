@@ -22,7 +22,7 @@ module.exports = grammar({
         $.property_name,
         repeat(seq(";", $.parameter)),
         ":",
-        $.property_value,
+        seq($.property_value, repeat(seq(",", $.property_value))),
       ),
 
     // TODO: Support line continuation
@@ -31,9 +31,8 @@ module.exports = grammar({
     // TODO: Support line continuation
     property_name: ($) => /[A-Za-z0-9-]+/,
 
-    // TODO: Split multi values
     property_value: ($) =>
-      repeat1(choice(/[^\r\n]/, "\r\n ", "\r\n\t", "\n ", "\n\t")),
+      repeat1(choice(/[^,\r\n]/, "\r\n ", "\r\n\t", "\n ", "\n\t")),
 
     parameter: ($) =>
       seq(
