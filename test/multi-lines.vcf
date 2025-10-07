@@ -1,0 +1,6 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Jane Smith
+NOTE:This is a very long note that should be
+ folded into a single line by the parser.
+END:VCARD

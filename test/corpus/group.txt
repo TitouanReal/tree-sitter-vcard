@@ -1,0 +1,29 @@
+==================
+Group
+==================
+
+BEGIN:VCARD
+VERSION:4.0
+FN:Sarah Williams
+personal.TEL:+1-555-987-6543
+END:VCARD
+
+---
+
+(source_file
+    (property
+        (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (property_value))
+    (property
+        (group)
+        (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (property_value)))

@@ -1,0 +1,31 @@
+==================
+Multi-params
+==================
+
+BEGIN:VCARD
+VERSION:4.0
+FN:Sarah Williams
+TEL;TYPE=work:+1-555-987-6543
+END:VCARD
+
+---
+
+(source_file
+    (property
+        (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (parameter
+            (parameter_name)
+            (parameter_value))
+        (property_value))
+    (property
+        (property_name)
+        (property_value)))
