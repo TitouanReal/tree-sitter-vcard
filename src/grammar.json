@@ -44,6 +44,27 @@
         }
       ]
     },
+    "_line_continuation": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\r\n "
+        },
+        {
+          "type": "STRING",
+          "value": "\n "
+        },
+        {
+          "type": "STRING",
+          "value": "\r\n\t"
+        },
+        {
+          "type": "STRING",
+          "value": "\n\t"
+        }
+      ]
+    },
     "property": {
       "type": "SEQ",
       "members": [
@@ -120,12 +141,36 @@
       ]
     },
     "group": {
-      "type": "PATTERN",
-      "value": "[A-Za-z0-9-]+"
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[A-Za-z0-9-]"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_line_continuation"
+          }
+        ]
+      }
     },
     "property_name": {
-      "type": "PATTERN",
-      "value": "[A-Za-z0-9-]+"
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[A-Za-z0-9-]"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_line_continuation"
+          }
+        ]
+      }
     },
     "property_value": {
       "type": "REPEAT1",
@@ -137,20 +182,8 @@
             "value": "[^,\\r\\n]"
           },
           {
-            "type": "STRING",
-            "value": "\r\n "
-          },
-          {
-            "type": "STRING",
-            "value": "\r\n\t"
-          },
-          {
-            "type": "STRING",
-            "value": "\n "
-          },
-          {
-            "type": "STRING",
-            "value": "\n\t"
+            "type": "SYMBOL",
+            "name": "_line_continuation"
           }
         ]
       }
@@ -189,19 +222,68 @@
       ]
     },
     "parameter_name": {
-      "type": "PATTERN",
-      "value": "[A-Za-z0-9-]+"
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "[A-Za-z0-9-]"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_line_continuation"
+          }
+        ]
+      }
     },
     "parameter_value": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "[^\";:,\\x00-\\x1F]+"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\""
+            },
+            {
+              "type": "REPEAT1",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "PATTERN",
+                    "value": "[^\\x00-\\x1F]"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "_line_continuation"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "STRING",
+              "value": "\""
+            }
+          ]
         },
         {
-          "type": "PATTERN",
-          "value": "\"[^\"\\x00-\\x1F]+\""
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\";:,\\x00-\\x1F]"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_line_continuation"
+              }
+            ]
+          }
         }
       ]
     }

@@ -16,6 +16,8 @@ module.exports = grammar({
     source_file: ($) =>
       seq(repeat(seq($.property, choice("\r\n", "\n"))), optional($.property)),
 
+    _line_continuation: ($) => choice("\r\n ", "\n ", "\r\n\t", "\n\t"),
+
     property: ($) =>
       seq(
         optional(seq($.group, ".")),
@@ -25,14 +27,11 @@ module.exports = grammar({
         seq($.property_value, repeat(seq(",", $.property_value))),
       ),
 
-    // TODO: Support line continuation
-    group: ($) => /[A-Za-z0-9-]+/,
+    group: ($) => repeat1(choice(/[A-Za-z0-9-]/, $._line_continuation)),
 
-    // TODO: Support line continuation
-    property_name: ($) => /[A-Za-z0-9-]+/,
+    property_name: ($) => repeat1(choice(/[A-Za-z0-9-]/, $._line_continuation)),
 
-    property_value: ($) =>
-      repeat1(choice(/[^,\r\n]/, "\r\n ", "\r\n\t", "\n ", "\n\t")),
+    property_value: ($) => repeat1(choice(/[^,\r\n]/, $._line_continuation)),
 
     parameter: ($) =>
       seq(
@@ -42,10 +41,13 @@ module.exports = grammar({
         repeat(seq(",", $.parameter_value)),
       ),
 
-    // TODO: Support line continuation
-    parameter_name: ($) => /[A-Za-z0-9-]+/,
+    parameter_name: ($) =>
+      repeat1(choice(/[A-Za-z0-9-]/, $._line_continuation)),
 
-    // TODO: Support line continuation
-    parameter_value: ($) => choice(/[^";:,\x00-\x1F]+/, /"[^"\x00-\x1F]+"/),
+    parameter_value: ($) =>
+      choice(
+        seq('"', repeat1(choice(/[^\x00-\x1F]/, $._line_continuation)), '"'),
+        repeat1(choice(/[^";:,\x00-\x1F]/, $._line_continuation)),
+      ),
   },
 });

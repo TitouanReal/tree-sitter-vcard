@@ -4,9 +4,20 @@ Multi-lines
 
 BEGIN:VCARD
 VERSION:4.0
-FN:Jane Smith
+F
+ N:Jane Smith
 NOTE:This is a very long note that should be
  folded into a single line by the parser.
+TEL;
+ TYP
+ E=
+ wor
+ k,
+ ce
+ ll
+ :
+ +1-555
+ -987-6543
 END:VCARD
 
 ---
@@ -23,6 +34,13 @@ END:VCARD
         (property_value))
     (property
         (property_name)
+        (property_value))
+    (property
+        (property_name)
+        (parameter
+            (parameter_name)
+            (parameter_value)
+            (parameter_value))
         (property_value))
     (property
         (property_name)
